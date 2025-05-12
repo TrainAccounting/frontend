@@ -1,0 +1,38 @@
+.card {
+  margin-top: 200px;
+  margin-left: 100px;
+
+  display: flex;               
+  max-width: 1000px;     
+  height: auto;
+  
+  border: 1px solid #e0e0e0;  
+  border-radius: 8px;        
+  overflow: hidden;           
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+.cardImage {
+  width: 300px;              
+  height: auto;               
+  object-fit: cover;         
+}
+
+.cardContent {
+  padding: 20px;              
+  flex: 1;                    
+}
+
+.cardTitle {
+  margin: 0 0 10px 0;         
+  font-size: 30px;            
+  font-weight: bold;          
+  color: black;                
+}
+
+.cardText {
+  margin: 0;                  
+  color: black;       
+  font-size: 20px;          
+  line-height: 1.5;           
+}
