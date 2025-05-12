@@ -1,4 +1,29 @@
+.bigButton {
+  display: inline-block;
+  padding: 20px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black; 
+  background-color: white; 
+  border: 3px solid black; 
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  width: 200px;
+  max-width: 500px;
+ 
+   margin-top : 100px;
+   margin-left : 1400px;
 
-.text{
-    font-size: 500px;
+}
+
+.bigButton:hover {
+  background-color: #f1f8ff; 
+  border-color: #33d646; 
+}
+
+.bigButton:active {
+  background-color: #e1f0ff; 
+  border-color: #33d671;
 }

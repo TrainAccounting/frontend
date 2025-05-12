@@ -1,16 +1,25 @@
 import style from './HomePage.module.css'
+import TabRecords from  './TabRecords'
+
 
 export default function HomePage(){
     return(
-
-        < t className = {style.text} >Сосал? </t>
+        <>
+        <CreateNewAcc > Создать новый учёт</CreateNewAcc>
+        <TabRecords />
+        </>
     );
 
 }
 
-function CreateNewAcc(){
+function CreateNewAcc({ children, onClick }){
     return (
+    <button className={style.bigButton} onClick={onClick}>
+      {children}
+    </button>
+  );
+};
 
-        <></>
-    );
-}
+
+
+
