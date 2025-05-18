@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import Start from './Components/StartPage/StartPage'
 import Register from './Components/Register/Register';
+import Entry from './Components/Entry/Entry'
 
 const router = createBrowserRouter([
   {
@@ -14,14 +15,14 @@ const router = createBrowserRouter([
 
   {
     path: "/entry",
-    element: <>dddd</>,
-    // errorElement: <ErrorPage />
+    element: <Entry />,
+    
   },
 
   {
     path: "/register",
     element: <Register />,
-    // errorElement: <ErrorPage />
+    
   },
 ]);
 
