@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.tabButton {
+  padding: 0.75rem 1.5rem;
+  background-color: #e5e7eb;
+  color: #1f2937;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tabButton:hover {
+  background-color: #d1d5db;
+}
+
+.activeButton {
+  background-color: #3b82f6;
+  color: white;
+}

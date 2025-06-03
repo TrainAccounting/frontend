@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'sonner';
 import styles from './Entry.module.css';
 
-const LoginForm = () => {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -20,17 +20,24 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setError('');
 
     try {
-      const response = await axios.post('https://localhost:5001/api/Auth/login', formData);
-      console.log('Успешный вход:', response.data);
-      
-      // Здесь можно сохранить токен авторизации и перенаправить на защищенную страницу
-      navigate('/');
+      // Используем новый GET-эндпоинт с параметрами
+      const response = await axios.get('https://localhost:5003/api/Users', {
+        params: {
+          email: formData.email,
+          password: formData.password
+        }
+      });
+
+      if (response.data.id) {
+        toast.success('Вход выполнен успешно!');
+        navigate(`/user/${response.data.id}`);
+      } else {
+        throw new Error('Неверный email или пароль');
+      }
     } catch (err) {
-      setError(err.response?.data?.message || 'Ошибка входа');
-      alert('Ошибка входа: неверный email или пароль');
+      toast.error(`Ошибка входа: ${err.message}`);
     } finally {
       setIsLoading(false);
     }
@@ -38,6 +45,8 @@ const LoginForm = () => {
 
   return (
     <div>
+      {toast}
+      
       <div className={styles.block1}>
         <a href="/">
           <button className={styles.but2}>Вернуться на главную страницу</button>
@@ -85,4 +94,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Login;
