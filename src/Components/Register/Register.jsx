@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './Register.module.css';
+import styles from './Register.module.css';
 
 const RegistrationForm = () => {
+
+
   const [formData, setFormData] = useState({
     fio: '',
     email: '',
     phone: '',
     password: '',
+    role: '',
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -25,102 +28,114 @@ const RegistrationForm = () => {
     setError('');
 
     try {
-      const response = await axios.post('https://localhost:5001/api/Auth/register', formData);
+      const response = await axios.post('https://localhost:5003/api/Users', formData);
       console.log('Успешная регистрация:', response.data);
+      alert('Успешная регистрация...\n Перейти ко входу ');
       navigate('/entry');
     } catch (err) {
       setError(err.response?.data?.message || 'Ошибка регистрации');
+      alert('Ошибка регистрации');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="registration-page">
-      <div className="registration-glass">
-        <div className="registration-header">
+    <div>
+      <div className={styles.block1}>
+
+        <a href = "/">
+          <button className={styles.but2}>Вернуться на главную страницу</button>
+        </a>
+
+      </div>
+      
+
+      <div className={styles.mainblock}>
+
+        <div className={styles.headname}>
           <h1>Создать аккаунт</h1>
-          <p>Присоединяйтесь к нашему сообществу</p>
         </div>
 
-        {error && <div className="error-message">{error}</div>}
-
         <form onSubmit={handleSubmit}>
-          <div className="input-group">
+
+          <div className={styles.inputblock}>
+            <span className={styles.spanstyle}> 🧒 </span>
             <input
+              className={styles.inputstyle}
               type="text"
               name="fio"
               value={formData.fio}
               onChange={handleChange}
               required
-              placeholder="ФИО"
+              placeholder=' Ваше ФИО'
             />
-            <span className="input-icon">👤</span>
           </div>
 
-          <div className="input-group">
+          <div className={styles.inputblock}>
+            <span className={styles.spanstyle}> 📧 </span>
             <input
+              className={styles.inputstyle}
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
-              placeholder="Email@example.com"
+              placeholder=" Email@example.com"
             />
-            <span className="input-icon">✉️</span>
           </div>
 
-          <div className="input-group">
+          <div className={styles.inputblock}>
+            <span className={styles.spanstyle}> 📞 </span>
             <input
+              className={styles.inputstyle}
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
               required
-              placeholder="Телефон"
+              placeholder=" Телефон"
             />
-            <span className="input-icon">📱</span>
           </div>
 
-          <div className="input-group">
+          <div className={styles.inputblock}>
+            <span className={styles.spanstyle}> 🤫 </span>
             <input
+              className={styles.inputstyle}
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               required
               minLength="6"
-              placeholder="Пароль"
+              placeholder=" Пароль"
             />
-            <span className="input-icon">🔒</span>
           </div>
 
-          <div className="select-wrapper">
+          <div className={styles.inputblock} >
+            <span className={styles.spanstyle}> ✏️ </span>
             <select
+              className={styles.inputstyle}
               name="role"
               value={formData.role}
               onChange={handleChange}
-              className="role-select"
             >
-              <option value="user">Пользователь</option>
-              <option value="admin">Администратор</option>
-              <option value="manager">Менеджер</option>
+              <option value="user">Обычный пользователь</option>
             </select>
           </div>
-          
 
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? 'Регистрация...' : 'Создать аккаунт'}
-            {isLoading && <span className="spinner"></span>}
+          <button className={styles.but1} type="submit" disabled={isLoading}>
+            {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
+            {isLoading && <span></span>}
           </button>
         </form>
 
-        <div className="auth-redirect">
-          Уже зарегистрированы? <span onClick={() => navigate('/entry')}>Войти</span>
-        </div>
       </div>
+
     </div>
+
   );
 };
 
 export default RegistrationForm;
+
