@@ -47,7 +47,7 @@
   font-size: larger;
 }
 
-.block1{
+.block1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,12 +56,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.but2{
+.but2 {
   padding: 0.5rem 1rem;
   border: 1px solid cornflowerblue;
   border-radius: 0.375rem;
   background-color: transparent;
   cursor: pointer;
   transition: all 0.2s;
-
 }

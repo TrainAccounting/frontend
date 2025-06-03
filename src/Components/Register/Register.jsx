@@ -28,7 +28,7 @@ const RegistrationForm = () => {
     setError('');
 
     try {
-      const response = await axios.post('https://localhost:5001/api/Auth/register', formData);
+      const response = await axios.post('https://localhost:5003/api/Users', formData);
       console.log('Успешная регистрация:', response.data);
       alert('Успешная регистрация...\n Перейти ко входу ');
       navigate('/entry');

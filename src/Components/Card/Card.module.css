@@ -1,0 +1,24 @@
+.card {
+  border: 2px solid black;
+  border-radius: 6px;
+  width: 300px;
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+}
