@@ -1,0 +1,10 @@
+services:
+  accounting3:
+    image: accounting3
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
